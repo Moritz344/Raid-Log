@@ -1,0 +1,57 @@
+<div class="container">
+  <app-topbar></app-topbar>
+  <br>
+  <div class="filter-h">
+    <span>Item Type</span>
+    <span>Item Rarity</span>
+  </div>
+  <div class="searchbar">
+    <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
+
+
+    <select [(ngModel)]="searchParameter.type" (change)="onFilter()">
+      <option value="">All</option>
+      @for (type of itemTypesArray; track $index) {
+          <option>{{ type }}</option>
+        }
+    </select>
+    <select [(ngModel)]="searchParameter.rarity" (change)="onFilter()">
+      <option value="">All</option>
+      @for (rare of itemRarityArray; track $index) {
+          <option>{{ rare }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="item">
+    @for(item of data; track $index) {
+      <app-item
+      [name]="item.name"
+      [desc]="item.description"
+      [img]="item.icon"
+      ></app-item>
+    }
+  </div>
+
+<div class="pages" >
+    <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="120"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    />
+</div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+</div>

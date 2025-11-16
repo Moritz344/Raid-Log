@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://metaforge.app",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
+

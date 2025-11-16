@@ -1,0 +1,271 @@
+:root{
+  --bg: #0b0f12;              /* page background */
+  --surface: #0f1619;         /* cards, panels */
+  --surface-2: #131a1d;       /* subtle layer */
+  --muted: #98a0a6;           /* secondary text */
+  --text: #e6eef3;            /* main text */
+  --accent: #6ee7b7;          /* primary accent (mint) */
+  --accent-2: #7cc4ff;        /* secondary accent */
+  --danger: #ff6b6b;
+  --glass: rgba(255,255,255,0.03);
+
+  /* Shadows and borders */
+  --elev-1: 0 6px 18px rgba(2,6,9,0.6);
+  --elev-2: 0 10px 30px rgba(2,6,9,0.7);
+  --border: rgba(255,255,255,0.04);
+
+  /* Spacing & typography */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --container-max: 1200px;
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  --base-font: 16px;
+  --line-height: 1.5;
+}
+
+/* Respect prefers-color-scheme but default to dark */
+@media (prefers-color-scheme: light) {
+  /* Optional: if user prefers light, override variables here.
+     If you strictly want dark-only, you can remove this block. */
+  :root {
+    /* simple light overrides (you can customize) */
+    --bg: #f6f8fa;
+    --surface: #ffffff;
+    --surface-2: #f3f6f8;
+    --muted: #54606a;
+    --text: #0b1820;
+    --glass: rgba(11,24,32,0.03);
+    --border: rgba(11,24,32,0.08);
+  }
+}
+
+
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: var(--base-font);
+  line-height: var(--line-height);
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg) 0%, #060809 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-tap-highlight-color: transparent;
+  padding: 2.4rem;
+}
+
+/* Headings */
+h1,h2,h3,h4,h5{
+  margin: 0 0 0.5rem 0;
+  font-weight: var(--fw-bold);
+  color: var(--text);
+  line-height: 1.15;
+}
+h1{ font-size: 2.1rem; }
+h2{ font-size: 1.6rem; }
+h3{ font-size: 1.25rem; }
+
+/* Paragraphs and muted text */
+p{ margin: 0 0 1rem 0; color: var(--muted); }
+.lead { color: var(--text); opacity: 0.95; font-weight: var(--fw-medium); }
+
+/* ---------- Surfaces & Cards ---------- */
+.surface {
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  box-shadow: var(--elev-1);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  color: var(--text);
+}
+
+/* glass effect */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  backdrop-filter: blur(6px) saturate(110%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:.5rem .75rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));
+  border: 1px solid rgba(255,255,255,0.03);
+  cursor: pointer;
+}
+.nav .brand { font-weight: var(--fw-bold); color:var(--text); letter-spacing: .3px; }
+.nav a { color: var(--muted);  padding:.4rem .6rem; border-radius:8px; font-weight:500; }
+.nav a:hover, .nav a.active { color: var(--text); background: rgba(255,255,255,0.02); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.55rem .85rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  user-select:none;
+  text-decoration:none;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 85%, transparent), var(--accent));
+  color: #061014;
+  box-shadow: 0 6px 18px rgba(30, 200, 150, 0.08);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: none;
+}
+
+/* small / large variants */
+.btn-sm{ padding:.35rem .6rem; border-radius:8px; font-size:.9rem; }
+.btn-lg{ padding:.85rem 1.2rem; border-radius:14px; font-size:1.05rem; }
+
+/* Icon buttons */
+.icon-btn{
+  width:40px; height:40px; padding:0; justify-content:center;
+  border-radius:10px;
+}
+
+/* ---------- Forms / Inputs ---------- */
+input, textarea, select {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: .6rem .75rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  font-size: 0.95rem;
+}
+textarea { min-height:120px; resize:vertical; }
+.input::placeholder { color: rgba(255,255,255,0.18); }
+
+.input:focus, textarea:focus, select:focus {
+  box-shadow: 0 6px 20px rgba(110,231,183,0.06);
+  border-color: rgba(110,231,183,0.28);
+}
+
+/* Form label & help text */
+.label { display:block; margin-bottom:.35rem; font-weight:600; color:var(--muted); font-size:.9rem; }
+.help { font-size:.85rem; color: rgba(255,255,255,0.45); margin-top:.35rem; }
+
+/* ---------- Tables ---------- */
+.table {
+  width:100%;
+  border-collapse: collapse;
+  font-size:.95rem;
+  overflow: auto;
+}
+.table th, .table td {
+  padding:.6rem .75rem;
+  border-bottom: 1px dashed rgba(255,255,255,0.03);
+  text-align: left;
+  color: var(--muted);
+}
+.table th { color: var(--text); font-weight:600; font-size:.9rem; }
+
+/* striped */
+.table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+
+/* ---------- Badges & Chips ---------- */
+.badge {
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.25rem .5rem; border-radius:999px;
+  background: rgba(255,255,255,0.02);
+  color: var(--muted); font-weight:600; font-size:.85rem;
+}
+.badge.accent{ background: linear-gradient(90deg, rgba(110,231,183,0.13), rgba(124,196,255,0.06)); color: var(--accent); }
+
+/* ---------- Utilities ---------- */
+.row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.col { flex:1; min-width:180px; }
+.center { display:flex; align-items:center; justify-content:center; }
+.stack { display:flex; flex-direction:column; gap:.5rem; }
+.muted { color: var(--muted); }
+.accent { color: var(--accent); font-weight:700; }
+
+/* spacing helpers */
+.mt-1{ margin-top:.5rem } .mt-2{ margin-top:1rem } .mb-1{ margin-bottom:.5rem }
+
+/* ---------- Accessibility: Focus outlines ---------- */
+:where(.btn, .input, a, button) :focus {
+  outline: none;
+}
+:where(.btn, .input, a, button):focus-visible {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* ---------- Code & Pre blocks ---------- */
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  background: rgba(255,255,255,0.02);
+  padding: .25rem .45rem;
+  border-radius: 6px;
+  color: var(--accent-2);
+  font-size:.92rem;
+}
+pre {
+  padding:1rem;
+  overflow:auto;
+  border-radius: 10px;
+}
+
+/* ---------- Small screens responsive ---------- */
+@media (max-width:720px){
+  .row{ flex-direction:column; }
+  h1{ font-size:1.6rem; }
+  body{ padding:1.2rem; }
+}
+
+/* ---------- Example helper classes for common UI patterns ---------- */
+/* Notification */
+.toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  min-width:260px;
+  padding:.85rem 1rem;
+  border-radius: 12px;
+  box-shadow: var(--elev-2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Empty state */
+.empty {
+  text-align:center;
+  color: var(--muted);
+  padding:2rem;
+  border-radius: var(--radius);
+  border: 1px dashed rgba(255,255,255,0.03);
+}
+
+/* tiny helpers */
+.truncate { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+/* ---------- End of stylesheet ---------- */
+

@@ -1,0 +1,43 @@
+.container{
+  background-color: var(--surface);
+  padding: 10px;
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container a{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.container img{
+  float: right;
+  margin-right: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
