@@ -3,12 +3,29 @@
   margin-top: 0px;
 }
 
+.img-section{
+  width: 1200px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.welcome-text{
+  font-size: 19px;
+  text-align: justify;
+  max-width: 1200px;
+
+}
+
+
 .blocks{
   display: grid;
   grid-template-columns: repeat(5,250px);
   gap: 0px;
   margin-top: 0px;
+  transition: 0.3s ease;
 }
+
 
 .section-header{
   display: flex;

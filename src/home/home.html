@@ -2,18 +2,26 @@
 <div class="container">
   <app-topbar></app-topbar>
   <section class="intro">
+    <div class="img-section">
+    <img src="arc_raiders.png" style="width: 100%; height: auto;" >
+  </div>
+
+    <br>
     <h1>Hey Raider!</h1>
-    <p>This website allows you to search for and view detailed information about Items, Traders, Arcs, and Quests from Arc Raiders.</p>
+    <p class="welcome-text">
+      ARC Raiders is a 2025 third-person extraction shooter developed and published by Embark Studios. The gameplay is PvPvE and can be played in teams of three, two, or played solo.
+      This website allows you to search for and view detailed information about Items, Traders, Arcs, and Quests from Arc Raiders.
+    </p>
   </section>
 
   <div class="section-header">
     <h1>Explore Arc Raiders</h1>
   </div>
   <section class="blocks">
-    <app-blocks name="Items" img="test" route="items"></app-blocks>
-    <app-blocks name="Traders" img="test" route="traders"></app-blocks>
-    <app-blocks name="Arcs" img="test" route="arcs"></app-blocks>
-    <app-blocks name="Quests" img="test" route="quests"></app-blocks>
+    <app-blocks name="Items" img="weapons.jpg" route="items"></app-blocks>
+    <app-blocks name="Traders" img="traders.png" route="traders"></app-blocks>
+    <app-blocks name="Arcs" img="arc.jpg" route="arcs"></app-blocks>
+    <app-blocks name="Quests" img="quests.png" route="quests"></app-blocks>
   </section>
 
 </div>

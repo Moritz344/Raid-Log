@@ -1,20 +1,18 @@
 :root{
-  --bg: #0b0f12;              /* page background */
-  --surface: #0f1619;         /* cards, panels */
-  --surface-2: #131a1d;       /* subtle layer */
-  --muted: #98a0a6;           /* secondary text */
-  --text: #e6eef3;            /* main text */
-  --accent: #6ee7b7;          /* primary accent (mint) */
-  --accent-2: #7cc4ff;        /* secondary accent */
+  --bg: #0b0f12;
+  --surface: #0f1619;
+  --surface-2: #131a1d;
+  --muted: #98a0a6;
+  --text: #e6eef3;
+  --accent: #6ee7b7;
+  --accent-2: #7cc4ff;
   --danger: #ff6b6b;
   --glass: rgba(255,255,255,0.03);
 
-  /* Shadows and borders */
   --elev-1: 0 6px 18px rgba(2,6,9,0.6);
   --elev-2: 0 10px 30px rgba(2,6,9,0.7);
   --border: rgba(255,255,255,0.04);
 
-  /* Spacing & typography */
   --radius: 12px;
   --radius-sm: 8px;
   --container-max: 1200px;
@@ -23,6 +21,26 @@
   --fw-bold: 700;
   --base-font: 16px;
   --line-height: 1.5;
+
+  --p-paginator-gap: 10px;
+  --p-paginator-nav-button-hover-background: var(--muted);
+  --p-paginator-nav-button-selected-background: var();
+  --p-paginator-nav-button-border-radius: 10px;
+  --p-paginator-nav-button-width: 20px;
+  --p-paginator-nav-button-height: 20px;
+}
+
+.p-paginator button{
+
+  font-size: 15px;
+}
+.p-paginator-pages{
+  padding: 10px;
+}
+
+.p-paginator-current {
+  background-color: black;
+
 }
 
 /* Respect prefers-color-scheme but default to dark */
@@ -50,7 +68,7 @@ body{
   font-size: var(--base-font);
   line-height: var(--line-height);
   color: var(--text);
-  background: linear-gradient(180deg, var(--bg) 0%, #060809 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, #060809 300%);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   -webkit-tap-highlight-color: transparent;
