@@ -28,6 +28,8 @@
   --p-paginator-nav-button-border-radius: 10px;
   --p-paginator-nav-button-width: 20px;
   --p-paginator-nav-button-height: 20px;
+
+  --common: rgb(146, 146, 146);
 }
 
 .p-paginator button{

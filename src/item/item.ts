@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -9,9 +10,14 @@ import { Component,Input } from '@angular/core';
 export class Item {
 
   @Input() name: string = "";
+  @Input() id: string = "";
   @Input() desc: string = "";
   @Input() img: string = "";
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  navigate() {
+    this.router.navigate([this.id]);
+  }
 
 }

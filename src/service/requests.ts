@@ -32,6 +32,10 @@ export class Requests {
     return this.http.get( url );
   }
 
+  getItemWithId(id: string) {
+    const url = `/api/arc-raiders/items?id=${id}`;
+    return this.http.get( url );
+  }
 
 
 }

@@ -1,0 +1,48 @@
+.left{
+  background-color: var(--glass);
+  padding: 10px;
+  height: 80vh;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.left-container{
+  display: flex;
+  justify-content: left;
+}
+
+.item-card{
+  padding: 10px;
+}
+
+.img-container{
+  display: flex;
+  background-color:  var(--surface-2);
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.extra{
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+}
+.extra-info{
+  position: absolute;
+  top: 386px;
+  left: 200px;
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+}
+
+.info-text{
+  color: var(--muted);
+
+}
+
+
+.loadout-container {
+    display: flex;
+    overflow: hidden;
+}
+
+
