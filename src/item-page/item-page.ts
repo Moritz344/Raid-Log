@@ -14,8 +14,7 @@ import { Topbar } from '../topbar/topbar';
 })
 export class ItemPage {
 
-  // TODO: get item
-  // TODO: left side: description,name
+  // TODO: use stat_block
   id: any;
   item: any;
 
@@ -43,6 +42,14 @@ export class ItemPage {
     switch (this.item.rarity) {
       case 'Common':
         return "var(--common)";
+      case 'Uncommon':
+        return "var(--uncommon)"
+      case 'Rare':
+        return "var(--rare)"
+      case 'Legendary':
+        return "var(--legendary)"
+      case 'Epic':
+        return "var(--epic)"
       default:
         return "white";
     }

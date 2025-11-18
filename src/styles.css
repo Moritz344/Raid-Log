@@ -30,6 +30,11 @@
   --p-paginator-nav-button-height: 20px;
 
   --common: rgb(146, 146, 146);
+  --epic: rgb(182, 73, 154);
+  --legendary: rgb(255, 158, 0);
+  --rare: #4fa8db;
+  --uncommon: rgb(100, 181, 120);
+
 }
 
 .p-paginator button{
@@ -44,6 +49,25 @@
   background-color: black;
 
 }
+
+::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 6px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+}
+
 
 /* Respect prefers-color-scheme but default to dark */
 @media (prefers-color-scheme: light) {
