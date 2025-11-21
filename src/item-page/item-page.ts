@@ -18,6 +18,9 @@ export class ItemPage {
   id: any;
   item: any;
 
+  entriesNotToShow: string[] = ["description","icon","id","stat_block","created_at","updated_at","flavor_text"];
+  entriesNotToShowStats: string[] = ["reducedDispersionRecoveryTime","reducedDispersionRecoveryTime"];
+
 
   constructor(private route: ActivatedRoute,
               private request: Requests) {
@@ -37,6 +40,15 @@ export class ItemPage {
 
     });
   }
+
+  getStatBlockEntries() {
+    return Object.entries(this.item.stat_block).map(([key, value]) => ({ key, value }));
+  }
+
+  getNormalStatsEntries() {
+    return Object.entries(this.item).map(([key,value]) => ({ key,value }));
+  }
+
 
   getBackgroundColor() {
     switch (this.item.rarity) {

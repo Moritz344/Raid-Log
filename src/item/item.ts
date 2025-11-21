@@ -17,7 +17,7 @@ export class Item {
   constructor(private router: Router) {}
 
   navigate() {
-    this.router.navigate([this.id]);
+    this.router.navigate(["item/" + this.id]);
   }
 
 }

@@ -37,5 +37,13 @@ export class Requests {
     return this.http.get( url );
   }
 
+  getTraders() {
+    const params = new URLSearchParams();
+
+    const url = `/api/arc-raiders/traders?${params}`;
+
+    return this.http.get( url );
+  }
+
 
 }

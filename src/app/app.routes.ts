@@ -14,6 +14,7 @@ export const routes: Routes = [
   { path: "arcs",component: Arcs},
   { path: "quests",component: Quests},
   { path: "tracker",component: Tracker},
-  { path: ":id",component: ItemPage},
+  { path: "item/:id",component: ItemPage},
+  { path: "trader/:name",component: ItemPage},
 
 ];

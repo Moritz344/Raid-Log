@@ -229,10 +229,12 @@ textarea { min-height:120px; resize:vertical; }
   text-align: left;
   color: var(--muted);
 }
-.table th { color: var(--text); font-weight:600; font-size:.9rem; }
+.table th { color: var(--text); font-weight:600; font-size:.9rem;background-color: var(--glass)}
 
-/* striped */
-.table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+.table tr:nth-child(even) td {
+  background: rgba(255,255,255,0.01);
+  width: 150px;
+}
 
 /* ---------- Badges & Chips ---------- */
 .badge {

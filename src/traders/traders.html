@@ -1,4 +1,10 @@
 <div class="container">
   <app-topbar></app-topbar>
-  <p>traders works!</p>
+
+  <div class="trader">
+    @for (trader of traders; track $index) {
+      <app-trader [name]="trader.name" [desc]="trader.desc" [img]="trader.img"></app-trader>
+    }
+  </div>
+  
 </div>

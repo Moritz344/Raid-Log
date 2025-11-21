@@ -16,30 +16,46 @@
           <div class="desc-container">
             <p>{{ this.item.description }}.</p>
           </div>
-          <div class="extra">
-            <span>Item type</span> 
-              <span
-                class="info-text">
-                {{ this.item.item_type}}
-              </span>
-            <span *ngIf="this.item.workbench">Workbench</span>
-              <span *ngIf="this.item.workbench" class="info-text">
-                {{ this.item.workbench }}
-              </span>
-            <span>Value</span>
-              <span class="info-text">
-                {{ this.item.value }} <img width="20" style="margin-left: 0px;background: white;border-radius: 10px" width="15"height="15" src="raider-coin.webp">
-              </span>
-            <span *ngIf="this.item.loadout_slots.length >= 1">Loadout Slot</span>
-            <div *ngIf="this.item.loadout_slots.length >= 1" class="loadout-container">
-              @for (slot of item.loadout_slots ; track $index) {
-                  <span class="info-text">{{ slot }},</span>
-              }
+            <div class="table">
+              <table>
+                <tr>
+                  @for (i of getNormalStatsEntries(); track $index) {
+                      <th *ngIf="i.value && !entriesNotToShow.includes(i.key) ">{{ i.key }}</th>
+                    }
+                </tr>
+                <tr>
+                  @for (i of getNormalStatsEntries(); track $index) {
+                      @if (i.value && !entriesNotToShow.includes(i.key)) {
+                        <td >
+                          {{ i.value}}
+                          @if (i.key == "value" ) {
+                          <img width="20" style="margin-left: 0px;background: white;border-radius: 10px" width="15"height="15" src="raider-coin.webp">
+                          }
+                          </td>
+                        }
+                  }
+
+                </tr>
+              </table>
+            <br>
             </div>
-            
-            <span>Weight</span>
-            <span class="info-text">{{ this.item.stat_block.weight }}kg</span>
-          </div>
+              <div class="table">
+                <table >
+                  <tr>
+                    @for (i of getStatBlockEntries(); track $index) {
+                      <th *ngIf="i.value && !entriesNotToShowStats.includes(i.key)">{{ i.key }}</th>
+                    }
+                  </tr>
+                  <tr>
+                    @for (i of getStatBlockEntries(); track $index) {
+                        @if (i.value && !entriesNotToShowStats.includes(i.key)) {
+                            <td>{{ i.value }} @if (i.key == "weight") { kg } </td>
+                        }
+                    }
+                  </tr>
+                </table>
+              </div>
+          <br>
         </div>
     </div>
   </div>
