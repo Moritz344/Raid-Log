@@ -8,6 +8,7 @@
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+  transition: 0.3s ease;
 }
 
 .searchbar{
@@ -34,6 +35,7 @@
 input{
   font-size: 20px;
 }
+
 
 .pages{
   display: flex;

@@ -1,1 +1,17 @@
-<p>trader-page works!</p>
+<app-topbar></app-topbar>
+<div class="container">
+  <div class="name">
+    <h1 >{{ name }}</h1>
+  </div>
+  <div class="trader">
+    <img  [src]="getImageForTrader()">
+    <p>{{ getDescriptionForTrader() }}</p>
+  </div>
+  <div class="items">
+    @for (item of data; track $index) {
+      <app-item [name]="item.name" [id]="item.id" [desc]="item.description" [img]="item.icon" ></app-item>
+    }
+  </div>
+  <br>
+  <br>
+</div>

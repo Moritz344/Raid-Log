@@ -6,6 +6,7 @@ import { Arcs } from '../arcs/arcs';
 import { Quests } from '../quests/quests';
 import { ItemPage } from '../item-page/item-page'
 import { Tracker } from '../tracker/tracker';
+import { TraderPage } from '../trader-page/trader-page';
 
 export const routes: Routes = [
   { path: "",component: Home},
@@ -15,6 +16,6 @@ export const routes: Routes = [
   { path: "quests",component: Quests},
   { path: "tracker",component: Tracker},
   { path: "item/:id",component: ItemPage},
-  { path: "trader/:name",component: ItemPage},
+  { path: "trader/:name",component: TraderPage},
 
 ];

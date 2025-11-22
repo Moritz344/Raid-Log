@@ -6,6 +6,11 @@
   border-radius: 10px;
   overflow-x: hidden;
   overflow-y: scroll;
+  transition: 0.3s ease;
+}
+
+.container:hover{
+  transform: scale(1.02);
 }
 
 a:hover{

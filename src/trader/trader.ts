@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trader',
@@ -11,8 +12,10 @@ export class Trader {
   @Input() img: string = "";
   @Input() desc: string = "";
 
-  constructor() {}
+  constructor(private route: Router) {}
 
-  navigate() {}
+  navigate() {
+    this.route.navigate(["trader/" + this.name]);
+  }
 
 }

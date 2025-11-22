@@ -1,0 +1,42 @@
+.container{
+}
+.items{
+  display: grid;
+  grid-template-columns: repeat(3,400px);
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+.trader {
+  display:flex;
+  margin-top: 0px;
+  justify-content:center;
+  margin-bottom: 0px;
+  
+}
+
+.name{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.trader img{
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  float: left;
+}
+
+.trader p {
+  text-align: justify;
+  width: 50%;
+  margin-top: 0px;
+}
+
+
+.trader h1{
+  margin-right: 10px;
+}
