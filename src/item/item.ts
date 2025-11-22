@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 export class Item {
 
   @Input() name: string = "";
-  @Input() id: string = "";
   @Input() desc: string = "";
   @Input() img: string = "";
+  @Input() route: string = "";
 
   constructor(private router: Router) {}
 
   navigate() {
-    this.router.navigate(["item/" + this.id]);
+    this.router.navigate([this.route]);
   }
 
 }

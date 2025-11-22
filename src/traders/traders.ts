@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Requests } from '../service/requests';
-import { Trader } from '../trader/trader';
+import { Item } from '../item/item';
 
 @Component({
   selector: 'app-traders',
-  imports: [Topbar,Trader],
+  imports: [Topbar,Item],
   templateUrl: './traders.html',
   styleUrl: './traders.css',
 })

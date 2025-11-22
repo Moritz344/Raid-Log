@@ -1,5 +1,28 @@
 <div class="container">
   <app-topbar></app-topbar>
-  <p>arcs works!</p>
+
+
+  <div class="searchbar">
+    <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
+
+
+  </div>
+
+  <div class="items">
+    @for (arc of data; track $index) {
+    <app-item [name]="arc.name" [desc]="arc.description" [img]="arc.icon" [id]="arc.id" route="arc/{{ arc.id }}"  ></app-item>
+    }
+  </div>
+<div class="pages" >
+    <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="120"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    />
+</div>
+  <br>
+  <br>
 </div>
 

@@ -7,6 +7,7 @@ import { Quests } from '../quests/quests';
 import { ItemPage } from '../item-page/item-page'
 import { Tracker } from '../tracker/tracker';
 import { TraderPage } from '../trader-page/trader-page';
+import { ArcPage } from '../arc-page/arc-page';
 
 export const routes: Routes = [
   { path: "",component: Home},
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: "tracker",component: Tracker},
   { path: "item/:id",component: ItemPage},
   { path: "trader/:name",component: TraderPage},
+  { path: "arc/:id",component: ArcPage},
 
 ];

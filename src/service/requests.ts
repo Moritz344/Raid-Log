@@ -45,5 +45,20 @@ export class Requests {
     return this.http.get( url );
   }
 
+  getArcs(page:number,search: any) {
+    const params = new URLSearchParams();
+
+    if (search.text) {
+      params.append("search",search.text);
+    }
+
+    params.append("page",page.toString());
+
+    const url = `/api/arc-raiders/arcs?${params}`;
+
+    return this.http.get( url );
+
+  }
+
 
 }
