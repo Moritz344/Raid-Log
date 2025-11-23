@@ -1,4 +1,20 @@
 <div class="container">
   <app-topbar></app-topbar>
-  <p>quests works!</p>
+
+  <div class="searchbar">
+    <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
+  </div>
+
+  <div class="item">
+    @for(quest of data; track $index) {
+    <app-item 
+      [name]="quest.name"
+      [desc]="quest.objectives[0]"
+      route="quest/{{quest.id}}"
+    ></app-item>
+    }
+  </div>
+  <br>
+  <br>
+
 </div>

@@ -1,5 +1,5 @@
 <div (click)="navigate()" class="container">
   <a>{{ name }}</a>
-  <img [src]="img" width="100" height="100">
+  <img *ngIf="img" [src]="img" width="100" height="100">
   <p>{{ desc }}</p>
 </div>
