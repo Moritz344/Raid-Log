@@ -1,1 +1,33 @@
-<p>arc-page works!</p>
+<div class="container">
+  <app-topbar></app-topbar>
+
+  <div class="left-container">
+    <div class="left">
+        <div class="item-card">
+          <div class="img-container">
+            <img width="140" height="120" [src]="this.item.icon">
+          </div>
+          <h1 style="display:flex;margin-top: 10px;margin-bottom:5px;">{{ this.item.name }}</h1>
+          <p class="desc">{{ this.item.description }}</p>
+          <div (click)="onLootDetails()" class="loot-details">
+            <div class="details">
+            <img [ngStyle]="{ transform: showLoot ? 'rotate(180deg)' : 'rotate(0deg)' }" src="arrow.svg">
+              <h1>Loot</h1>
+            </div>
+          <div *ngIf="showLoot" class="loot">
+            @for (loot of item.loot;track $index) {
+              <app-item [name]="loot.item.name" 
+              [id]="loot.item_id" 
+              route="item/{{loot.item_id}}"
+              [img]="loot.item.icon"></app-item>
+            }
+          </div>
+          </div>
+          <br>
+        </div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -50,6 +50,9 @@
 
 }
 
+
+
+
 ::-webkit-scrollbar {
     width: 12px; 
     height: 12px; 
@@ -236,59 +239,12 @@ textarea { min-height:120px; resize:vertical; }
   width: 150px;
 }
 
-/* ---------- Badges & Chips ---------- */
-.badge {
-  display:inline-flex; align-items:center; gap:.4rem;
-  padding:.25rem .5rem; border-radius:999px;
-  background: rgba(255,255,255,0.02);
-  color: var(--muted); font-weight:600; font-size:.85rem;
-}
-.badge.accent{ background: linear-gradient(90deg, rgba(110,231,183,0.13), rgba(124,196,255,0.06)); color: var(--accent); }
-
-/* ---------- Utilities ---------- */
-.row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
-.col { flex:1; min-width:180px; }
-.center { display:flex; align-items:center; justify-content:center; }
-.stack { display:flex; flex-direction:column; gap:.5rem; }
-.muted { color: var(--muted); }
-.accent { color: var(--accent); font-weight:700; }
-
-/* spacing helpers */
-.mt-1{ margin-top:.5rem } .mt-2{ margin-top:1rem } .mb-1{ margin-bottom:.5rem }
-
-/* ---------- Accessibility: Focus outlines ---------- */
-:where(.btn, .input, a, button) :focus {
-  outline: none;
-}
-:where(.btn, .input, a, button):focus-visible {
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-}
-
-/* ---------- Code & Pre blocks ---------- */
-code, pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
-  background: rgba(255,255,255,0.02);
-  padding: .25rem .45rem;
-  border-radius: 6px;
-  color: var(--accent-2);
-  font-size:.92rem;
-}
-pre {
-  padding:1rem;
-  overflow:auto;
-  border-radius: 10px;
-}
-
-/* ---------- Small screens responsive ---------- */
 @media (max-width:720px){
   .row{ flex-direction:column; }
   h1{ font-size:1.6rem; }
   body{ padding:1.2rem; }
 }
 
-/* ---------- Example helper classes for common UI patterns ---------- */
-/* Notification */
 .toast {
   position: fixed;
   right: 1rem;
@@ -301,17 +257,6 @@ pre {
   border: 1px solid rgba(255,255,255,0.04);
 }
 
-/* Empty state */
-.empty {
-  text-align:center;
-  color: var(--muted);
-  padding:2rem;
-  border-radius: var(--radius);
-  border: 1px dashed rgba(255,255,255,0.03);
-}
-
-/* tiny helpers */
 .truncate { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 
-/* ---------- End of stylesheet ---------- */
 

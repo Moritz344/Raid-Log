@@ -45,7 +45,7 @@ export class Requests {
     return this.http.get( url );
   }
 
-  getArcs(page:number,search: any) {
+  getArcs(page:number,search: any,includeLoot: boolean) {
     const params = new URLSearchParams();
 
     if (search.text) {
@@ -53,6 +53,9 @@ export class Requests {
     }
 
     params.append("page",page.toString());
+    if (includeLoot) {
+      params.append("includeLoot","true");
+    }
 
     const url = `/api/arc-raiders/arcs?${params}`;
 

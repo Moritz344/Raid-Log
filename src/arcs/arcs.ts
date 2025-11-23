@@ -25,14 +25,14 @@ export class Arcs {
 
   search() {
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
-    this.request.getArcs(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
+    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe((response: any) => {
       this.data = response.data;
       console.log(response.data);
     });
   }
 
   initData() {
-    this.request.getArcs(0,"").subscribe( (response: any) => {
+    this.request.getArcs(0,"",false).subscribe( (response: any) => {
       this.data = response.data;
       console.log(response)
     });
@@ -44,9 +44,7 @@ export class Arcs {
 
     this.currentItemPage = (this.first / this.rows ) + 1;
 
-    console.log(this.currentItemPage);
-
-    this.request.getArcs(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
+    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe((response: any) => {
       this.data = response.data;
       console.log(response);
     });
