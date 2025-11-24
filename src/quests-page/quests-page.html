@@ -1,1 +1,27 @@
-<p>quests-page works!</p>
+<app-topbar></app-topbar>
+<div class="container">
+  <h1 style="margin-top: 50px;">{{ data.name }}</h1>
+  <div  class="objectives">
+    <div class="obj-header">
+      <img (click)="onObjective()" [ngStyle]="{ transform: showObjective ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <h2>Objectives </h2>
+    </div>
+    <div *ngIf="showObjective">
+      @for (obj of data.objectives; track $index ) {
+        <li style="margin-left: 50px;">{{ obj }}</li>
+      }
+    </div>
+  </div>
+  <div class="rewards">
+    <div class="rewards-header">
+      <img (click)="onRewards()" [ngStyle]="{ transform: showRewards ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <h2>Rewards</h2>
+    </div>
+    <div *ngIf="showRewards" class="items">
+      @for (obj of data.rewards; track $index ) {
+      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.id}}" [img]="obj.item.icon"></app-item>
+      }
+    </div>
+  </div>
+
+</div>

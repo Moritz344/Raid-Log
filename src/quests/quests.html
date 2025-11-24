@@ -9,8 +9,8 @@
     @for(quest of data; track $index) {
     <app-item 
       [name]="quest.name"
-      [desc]="quest.objectives[0]"
-      route="quest/{{quest.id}}"
+      [desc]="quest.objectives[0] + ' '  + quest.objectives[1]"
+      route="quest/{{quest.name}}"
     ></app-item>
     }
   </div>

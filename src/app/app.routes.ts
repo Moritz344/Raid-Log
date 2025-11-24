@@ -20,6 +20,6 @@ export const routes: Routes = [
   { path: "item/:id",component: ItemPage},
   { path: "trader/:name",component: TraderPage},
   { path: "arc/:id",component: ArcPage},
-  { path: "quest/:id",component: QuestsPage},
+  { path: "quest/:name",component: QuestsPage},
 
 ];
