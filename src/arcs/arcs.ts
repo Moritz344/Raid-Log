@@ -18,23 +18,24 @@ export class Arcs {
   currentItemPage: number = 0;
   first: number = 0;
   rows: number = 10;
+  isLoading: boolean = false;
 
   initSearchParameter() {
     this.searchParameter = { text: "",type: "",rarity: "" };
   }
 
   search() {
+    this.isLoading = true;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe((response: any) => {
       this.data = response.data;
-      console.log(response.data);
+      this.isLoading = false;
     });
   }
 
   initData() {
     this.request.getArcs(0,"",false).subscribe( (response: any) => {
       this.data = response.data;
-      console.log(response)
     });
   }
 

@@ -5,7 +5,11 @@
     <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
   </div>
 
-  <div class="item">
+  @if (isLoading) {
+    <div class="load"></div>
+  }
+
+  <div class="item" *ngIf="isLoading == false">
     @for(quest of data; track $index) {
     <app-item 
       [name]="quest.name"

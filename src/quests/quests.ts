@@ -16,6 +16,7 @@ export class Quests {
 
   data: any;
   searchParameter: {text: string,} = { text: ""};
+  isLoading: boolean = false;
 
   initData() {
     this.request.getQuests("").subscribe((response:any) => {
@@ -25,10 +26,11 @@ export class Quests {
   }
 
   search() {
+    this.isLoading = true;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.request.getQuests(this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
-      console.log(response.data);
+      this.isLoading = false;
     });
   }
 
