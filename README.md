@@ -1,4 +1,4 @@
-# ArcRaiderInfo
+# Raid-Log
 A website to get information about:
 
 - Trader 
