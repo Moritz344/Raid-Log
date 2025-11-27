@@ -3,16 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 import { Requests } from '../service/requests';
 import { Topbar } from '../topbar/topbar';
 import { Item } from '../item/item';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trader-page',
-  imports: [Topbar,Item],
+  imports: [Topbar,Item,FormsModule,CommonModule],
   templateUrl: './trader-page.html',
   styleUrl: './trader-page.css',
 })
 export class TraderPage {
   name: any;
   data: any;
+  showItems: boolean = true;
 
   descriptions:{name: string,desc:string}[] = [
     {
@@ -56,10 +59,15 @@ export class TraderPage {
   initTraderData() {
     this.request.getTraders().subscribe((response: any) => {
       this.data = response.data[this.name.replace(/ /g, '')];
+      console.log(this.data);
       
     });
     console.log(this.descriptions);
 
+  }
+
+  onItems() {
+    this.showItems = !this.showItems;
   }
 
   getDescriptionForTrader() {

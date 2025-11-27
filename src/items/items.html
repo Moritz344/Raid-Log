@@ -23,8 +23,13 @@
     </select>
   </div>
 
-  <div class="item">
+  @if(isLoading ) {
+      <div class="load"></div>
+    }
+
+  <div class="item" *ngIf="isLoading == false">
     @for(item of data; track $index) {
+  
       <app-item
       [name]="item.name"
       [desc]="item.description"
@@ -33,7 +38,6 @@
       ></app-item>
     }
   </div>
-
 <div class="pages" >
     <p-paginator
     (onPageChange)="onPageChange($event)"

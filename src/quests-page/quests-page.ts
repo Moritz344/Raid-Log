@@ -18,10 +18,11 @@ export class QuestsPage {
   data: any;
   showObjective: boolean = true;
   showRewards: boolean = true;
+  showGrantedItem: boolean = true;
+  showRequiredItem: boolean = true;
+  showLocation: boolean = true;
 
-  //TODO: granted item 
-  //TODO: required items
-  //TODO: locations
+  // TODO: show map image
 
   initData() {
     this.request.getQuests(this.search).subscribe((response: any) => {
@@ -30,12 +31,26 @@ export class QuestsPage {
     });
   }
 
-  onObjective() {
-    this.showObjective = !this.showObjective;
-  }
-
-  onRewards() {
-    this.showRewards = !this.showRewards;
+  onItem(item: string) {
+    switch (item) {
+      case 'objectives':
+        this.showObjective = !this.showObjective;
+        return;
+      case 'location':
+        this.showLocation = !this.showLocation;
+        return;
+      case 'granted_item':
+        this.showGrantedItem = !this.showGrantedItem;
+        return;
+      case 'required_items':
+        this.showRequiredItem = !this.showRequiredItem;
+        return;
+      case 'rewards':
+        this.showRewards = !this.showRewards;
+        return;
+      default:
+        return;
+    }
   }
 
   constructor(private request: Requests,

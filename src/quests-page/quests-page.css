@@ -5,6 +5,7 @@
 
 .obj-header{
   display: flex;
+  margin-top: 40px;
 
 }
 
@@ -14,12 +15,15 @@
   justify-content: left;
   gap: 20px;
   margin-top: 0px;
+  margin-left: 20px;
 }
 
-.rewards{
+
+.header-item{
   margin-top: 20px;
 }
 
-.rewards-header{
-  display: flex;
+.header{
+  display:flex;
+  margin-top: 20px;
 }

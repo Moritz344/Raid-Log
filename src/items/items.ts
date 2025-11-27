@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './items.html',
   styleUrl: './items.css',
 })
+
+// TODO: Loading animation
+// TODO: nothing found text
+
 export class Items {
   first: number = 0;
   rows: number = 10;
@@ -21,6 +25,8 @@ export class Items {
 
   itemTypesArray: string[] = [];
   itemRarityArray: string[] = [];
+
+  isLoading: boolean = false;
 
   constructor(private requests: Requests) {
     this.initItemTypes();
@@ -81,19 +87,20 @@ export class Items {
   }
 
   onFilter() {
-    console.log(this.searchParameter);
+    this.isLoading = true;
     this.requests.getItems(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
-      console.log(response);
+      this.isLoading = false;
     });
   }
 
   search() {
+    this.isLoading = true;
     this.currentItemPage = 0;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.requests.getItems(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
-      console.log(response.data);
+      this.isLoading = false;
     });
   }
 

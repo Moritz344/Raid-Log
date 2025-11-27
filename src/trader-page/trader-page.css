@@ -17,6 +17,16 @@
   
 }
 
+.items-header{
+  display: flex;
+  margin-left: 250px;
+
+}
+
+.items-header img{
+  margin-bottom: 5px;
+}
+
 .name{
   display: flex;
   justify-content: center;

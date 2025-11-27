@@ -3,24 +3,58 @@
   <h1 style="margin-top: 50px;">{{ data.name }}</h1>
   <div  class="objectives">
     <div class="obj-header">
-      <img (click)="onObjective()" [ngStyle]="{ transform: showObjective ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <img (click)="onItem('objectives')" [ngStyle]="{ transform: showObjective ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
       <h2>Objectives </h2>
     </div>
     <div *ngIf="showObjective">
       @for (obj of data.objectives; track $index ) {
-        <li style="margin-left: 50px;">{{ obj }}</li>
+        <li style="margin-left: 50px;font-size: 19px">{{ obj }}</li>
       }
     </div>
   </div>
-  <div class="rewards">
-    <div class="rewards-header">
-      <img (click)="onRewards()" [ngStyle]="{ transform: showRewards ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+  <div class="header-items">
+    <div class="header">
+      <img (click)="onItem('rewards')" [ngStyle]="{ transform: showRewards ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
       <h2>Rewards</h2>
     </div>
     <div *ngIf="showRewards" class="items">
       @for (obj of data.rewards; track $index ) {
-      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.id}}" [img]="obj.item.icon"></app-item>
+      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
       }
+    </div>
+  </div>
+
+  <div class="header-items" *ngIf="data.granted_items.length > 0">
+    <div class="header">
+      <img (click)="onItem('granted_items')" [ngStyle]="{ transform: showGrantedItem ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <h2>Granted Items</h2>
+    </div>
+    <div *ngIf="showGrantedItem" class="items">
+      @for (obj of data.granted_items; track $index ) {
+      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
+      }
+    </div>
+  </div>
+
+  <div class="header-items" *ngIf="data.required_items.length > 0">
+    <div class="header">
+      <img (click)="onItem('required_items')" [ngStyle]="{ transform: showRequiredItem ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <h2>Required Items</h2>
+    </div>
+    <div *ngIf="showRequiredItem" class="items">
+      @for (obj of data.required_items; track $index ) {
+      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
+      }
+    </div>
+  </div>
+
+  <div class="header-items" *ngIf="data.locations.length > 0">
+    <div class="header">
+      <img (click)="onItem('location')" [ngStyle]="{ transform: showLocation ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+      <h2>Location </h2>
+    </div>
+    <div *ngIf="showLocation" class="items">
+      <span>{{ data.locations[0].map }}</span>
     </div>
   </div>
 

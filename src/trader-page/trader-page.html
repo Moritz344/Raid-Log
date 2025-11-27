@@ -7,9 +7,14 @@
     <img  [src]="getImageForTrader()">
     <p>{{ getDescriptionForTrader() }}</p>
   </div>
-  <div class="items">
+
+  <div class="items-header">
+    <img (click)="onItems()" [ngStyle]="{ transform: showItems ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
+    <h1>Items</h1>
+  </div>
+  <div class="items" *ngIf="showItems">
     @for (item of data; track $index) {
-      <app-item [name]="item.name" [id]="item.id" [desc]="item.description" [img]="item.icon" ></app-item>
+      <app-item [name]="item.name" route="item/{{item.id}}" [desc]="item.description" [img]="item.icon" ></app-item>
     }
   </div>
   <br>
