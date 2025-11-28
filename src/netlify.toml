@@ -1,6 +1,6 @@
 [build]
   command = "npm install && npm run build"
-  publish = "../dist/arc-radier-info/browser"
+  publish = "../dist/arc-raider-info/browser"
 
 [build.environment]
   NODE_VERSION = "22.12.0"
