@@ -12,8 +12,15 @@ export class Requests {
 
   limit: number = 12;
 
+  itemsData: any;
+
   constructor(private http:HttpClient) {}
 
+  saveInitItemData(data: any) {
+    localStorage.setItem("items",data);
+    let items = localStorage.getItem("items");
+    console.log(items);
+  }
 
   getItems(page: number,searchParameter: any) {
     const params = new URLSearchParams();

@@ -82,8 +82,10 @@ export class Items {
   initItems() {
     this.requests.getItems(1,"").subscribe((response: any) => {
       this.data = response.data;
-      console.log(response);
+      this.requests.saveInitItemData(this.data);
     });
+
+
   }
 
   onFilter() {

@@ -16,7 +16,6 @@ export const routes: Routes = [
   { path: "traders",component: Traders},
   { path: "arcs",component: Arcs},
   { path: "quests",component: Quests},
-  { path: "tracker",component: Tracker},
   { path: "item/:id",component: ItemPage},
   { path: "trader/:name",component: TraderPage},
   { path: "arc/:id",component: ArcPage},
