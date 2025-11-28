@@ -3,4 +3,4 @@
   publish = "../dist/arc-radier-info/browser"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22.12.0"
