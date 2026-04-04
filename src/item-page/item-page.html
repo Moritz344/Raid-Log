@@ -26,8 +26,8 @@
                 <tr>
                   @for (i of getNormalStatsEntries(); track $index) {
                       @if (i.value && !entriesNotToShow.includes(i.key)) {
-                        <td >
-                          {{ i.value}}
+                        <td>
+                          {{ i.value }}
                           @if (i.key == "value" ) {
                           <img width="20" style="margin-left: 0px;background: white;border-radius: 10px" width="15"height="15" src="raider-coin.webp">
                           }
@@ -48,7 +48,7 @@
                   </tr>
                   <tr>
                     @for (i of getStatBlockEntries(); track $index) {
-                        @if (i.value && !entriesNotToShowStats.includes(i.key)) {
+                        @if (i.value &&  !entriesNotToShowStats.includes(i.key)) {
                             <td>{{ i.value }} @if (i.key == "weight") { kg } </td>
                         }
                     }

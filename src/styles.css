@@ -22,8 +22,8 @@
   --base-font: 16px;
   --line-height: 1.5;
 
-  --p-paginator-gap: 10px;
-  --p-paginator-nav-button-hover-background: var(--muted);
+  --p-paginator-gap: 20px;
+  --p-paginator-nav-button-hover-background: var(--common);
   --p-paginator-nav-button-selected-background: var();
   --p-paginator-nav-button-border-radius: 10px;
   --p-paginator-nav-button-width: 20px;
@@ -188,11 +188,9 @@ textarea { min-height:120px; resize:vertical; }
   border-color: rgba(110,231,183,0.28);
 }
 
-/* Form label & help text */
 .label { display:block; margin-bottom:.35rem; font-weight:600; color:var(--muted); font-size:.9rem; }
 .help { font-size:.85rem; color: rgba(255,255,255,0.45); margin-top:.35rem; }
 
-/* ---------- Tables ---------- */
 .table {
   width:100%;
   border-collapse: collapse;
