@@ -3,6 +3,7 @@
   margin-top: 0px;
 }
 
+
 .item{
   display: grid;
   grid-template-columns: repeat(3,400px);
@@ -13,23 +14,24 @@
 
 .searchbar{
   display:grid;
-  grid-template-columns: repeat(3,1fr);
-  justify-content: left;
-  gap: 10px;
-  margin-top: 30px;
-  margin-left: 70px;
-  background-color: black;
-  width: 200px;
+  position: relative;
+  grid-template-columns: 400px 400px 400px;
+  gap: 20px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(3 * 400px + 2 * 20px);
 }
 
 .filter-h{
   position: absolute;
-  left: 610px;
-  gap: 80px;
+  top: -20px;
+  left: 420px;
   display: grid;
-  grid-template-columns: repeat(2,100px);
+  grid-template-columns: 400px 400px;
+  gap: 20px;
+  width: calc(2 * 400px + 20px);
   color: var(--muted);
-
 }
 
 input{
@@ -41,3 +43,10 @@ input{
   justify-content: center;
   margin-top: 20px;
 }
+
+.loading-container{
+  display: flex;
+  justify-content: center;
+  margin-left: -500px;
+}
+

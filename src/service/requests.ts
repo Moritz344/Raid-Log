@@ -14,34 +14,33 @@ export class Requests {
 
   itemsData: any;
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   saveInitItemData(data: any) {
-    localStorage.setItem("items",data);
+    localStorage.setItem("items", data);
     let items = localStorage.getItem("items");
-    console.log(items);
   }
 
-  getItems(page: number,searchParameter: any) {
+  getItems(page: number, searchParameter: any) {
     const params = new URLSearchParams();
     if (searchParameter.text) {
-      params.append("search",searchParameter.text);
-    }else if (searchParameter.type) {
-      params.append("item_type",searchParameter.type);
-    }else if(searchParameter.rarity) {
-      params.append("rarity",searchParameter.rarity);
+      params.append("search", searchParameter.text);
+    } else if (searchParameter.type) {
+      params.append("item_type", searchParameter.type);
+    } else if (searchParameter.rarity) {
+      params.append("rarity", searchParameter.rarity);
     }
 
-    params.append("page",page.toString());
-    params.append("limit",this.limit.toString());
+    params.append("page", page.toString());
+    params.append("limit", this.limit.toString());
     const url = `/api/arc-raiders/items?${params}`;
-    console.log("url",url);
-    return this.http.get( url );
+    console.log("url", url);
+    return this.http.get(url);
   }
 
   getItemWithId(id: string) {
     const url = `/api/arc-raiders/items?id=${id}`;
-    return this.http.get( url );
+    return this.http.get(url);
   }
 
   getTraders() {
@@ -49,24 +48,24 @@ export class Requests {
 
     const url = `/api/arc-raiders/traders?${params}`;
 
-    return this.http.get( url );
+    return this.http.get(url);
   }
 
-  getArcs(page:number,search: any,includeLoot: boolean) {
+  getArcs(page: number, search: any, includeLoot: boolean) {
     const params = new URLSearchParams();
 
     if (search.text) {
-      params.append("search",search.text);
+      params.append("search", search.text);
     }
 
-    params.append("page",page.toString());
+    params.append("page", page.toString());
     if (includeLoot) {
-      params.append("includeLoot","true");
+      params.append("includeLoot", "true");
     }
 
     const url = `/api/arc-raiders/arcs?${params}`;
 
-    return this.http.get( url );
+    return this.http.get(url);
 
   }
 
@@ -74,12 +73,12 @@ export class Requests {
     const params = new URLSearchParams();
 
     if (search.text) {
-      params.append("search",search.text);
+      params.append("search", search.text);
     }
 
     const url = `/api/arc-raiders/quests?${params}`;
 
-    return this.http.get( url );
+    return this.http.get(url);
 
   }
 

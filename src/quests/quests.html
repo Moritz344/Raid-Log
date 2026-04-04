@@ -1,15 +1,16 @@
+<app-topbar></app-topbar>
 <div class="container">
-  <app-topbar></app-topbar>
-
   <div class="searchbar">
     <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
   </div>
 
   @if (isLoading) {
-    <div class="load"></div>
+    <div class="loading-container">
+      <div class="load"></div>
+    </div>
   }
 
-  <div class="item" *ngIf="isLoading == false">
+  <div class="item" *ngIf="!isLoading">
     @for(quest of data; track $index) {
     <app-item 
       [name]="quest.name"

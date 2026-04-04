@@ -8,20 +8,19 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-quests',
-  imports: [Topbar,Item,FormsModule,CommonModule],
+  imports: [Topbar, Item, FormsModule, CommonModule],
   templateUrl: './quests.html',
   styleUrl: './quests.css',
 })
 export class Quests {
 
   data: any;
-  searchParameter: {text: string,} = { text: ""};
+  searchParameter: { text: string, } = { text: "" };
   isLoading: boolean = false;
 
   initData() {
-    this.request.getQuests("").subscribe((response:any) => {
+    this.request.getQuests("").subscribe((response: any) => {
       this.data = response.data;
-      console.log(this.data);
     });
   }
 

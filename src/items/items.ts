@@ -1,27 +1,28 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Item } from '../item/item';
 import { Requests } from '../service/requests';
-import { PaginatorModule,PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items',
-  imports: [Topbar,Item,PaginatorModule,CommonModule,FormsModule],
+  imports: [Topbar, Item, PaginatorModule, CommonModule, FormsModule],
   templateUrl: './items.html',
   styleUrl: './items.css',
 })
 
 // TODO: Loading animation
 // TODO: nothing found text
+// TODO: show item rarity in item block 
 
 export class Items {
   first: number = 0;
   rows: number = 10;
-  data:any;
+  data: any;
   currentItemPage: number = 0;
-  searchParameter: {text: string,type: string,rarity: string} = { text: "",type: "",rarity: "" };
+  searchParameter: { text: string, type: string, rarity: string } = { text: "", type: "", rarity: "" };
 
   itemTypesArray: string[] = [];
   itemRarityArray: string[] = [];
@@ -76,11 +77,11 @@ export class Items {
   }
 
   initSearchParameter() {
-    this.searchParameter = { text: "",type: "",rarity: "" };
+    this.searchParameter = { text: "", type: "", rarity: "" };
   }
 
   initItems() {
-    this.requests.getItems(1,"").subscribe((response: any) => {
+    this.requests.getItems(1, "").subscribe((response: any) => {
       this.data = response.data;
       this.requests.saveInitItemData(this.data);
     });
@@ -90,7 +91,7 @@ export class Items {
 
   onFilter() {
     this.isLoading = true;
-    this.requests.getItems(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
       this.isLoading = false;
     });
@@ -100,7 +101,7 @@ export class Items {
     this.isLoading = true;
     this.currentItemPage = 0;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
-    this.requests.getItems(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
       this.isLoading = false;
     });
@@ -110,12 +111,12 @@ export class Items {
     this.first = event.first ?? 0;
     this.rows = event.rows ?? 10;
 
-    this.currentItemPage = (this.first / this.rows ) + 1;
+    this.currentItemPage = (this.first / this.rows) + 1;
 
     console.log(this.currentItemPage);
 
-    console.log("currently searching:",this.searchParameter.text);
-    this.requests.getItems(this.currentItemPage,this.searchParameter).subscribe((response: any) => {
+    console.log("currently searching:", this.searchParameter.text);
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
       this.data = response.data;
       console.log(response);
     });

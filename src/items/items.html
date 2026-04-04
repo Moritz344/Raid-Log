@@ -1,21 +1,20 @@
-<div class="container">
-  <app-topbar></app-topbar>
-  <br>
-  <div class="filter-h">
-    <span>Item Type</span>
-    <span>Item Rarity</span>
-  </div>
+<app-topbar></app-topbar>
+
+<div  class="container">
   <div class="searchbar">
-    <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
+    <div class="filter-h">
+      <span>Item Type</span>
+      <span>Item Rarity</span>
+    </div>
+    <input style="margin-top: 10px" spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
 
-
-    <select [(ngModel)]="searchParameter.type" (change)="onFilter()">
+    <select style="margin-top: 10px" [(ngModel)]="searchParameter.type" (change)="onFilter()">
       <option value="">All</option>
       @for (type of itemTypesArray; track $index) {
           <option>{{ type }}</option>
         }
     </select>
-    <select [(ngModel)]="searchParameter.rarity" (change)="onFilter()">
+    <select style="margin-top: 10px" [(ngModel)]="searchParameter.rarity" (change)="onFilter()">
       <option value="">All</option>
       @for (rare of itemRarityArray; track $index) {
           <option>{{ rare }}</option>
@@ -24,10 +23,12 @@
   </div>
 
   @if(isLoading ) {
+    <div class="loading-container">
       <div class="load"></div>
+    </div>
     }
 
-  <div class="item" *ngIf="isLoading == false">
+  <div  class="item" *ngIf="!isLoading">
     @for(item of data; track $index) {
   
       <app-item
@@ -38,7 +39,7 @@
       ></app-item>
     }
   </div>
-<div class="pages" >
+<div *ngIf="!isLoading" class="pages" >
     <p-paginator
     (onPageChange)="onPageChange($event)"
     [first]="first"
@@ -53,3 +54,5 @@
 <br>
 
 </div>
+
+

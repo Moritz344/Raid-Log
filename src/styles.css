@@ -162,7 +162,6 @@ p{ margin: 0 0 1rem 0; color: var(--muted); }
   color: var(--text);
 }
 
-/* glass effect */
 .glass {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   backdrop-filter: blur(6px) saturate(110%);
@@ -170,19 +169,6 @@ p{ margin: 0 0 1rem 0; color: var(--muted); }
   border: 1px solid rgba(255,255,255,0.03);
 }
 
-.nav {
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  padding:.5rem .75rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));
-  border: 1px solid rgba(255,255,255,0.03);
-  cursor: pointer;
-}
-.nav .brand { font-weight: var(--fw-bold); color:var(--text); letter-spacing: .3px; }
-.nav a { color: var(--muted);  padding:.4rem .6rem; border-radius:8px; font-weight:500; }
-.nav a:hover, .nav a.active { color: var(--text); background: rgba(255,255,255,0.02); }
 
 input, textarea, select {
   background: var(--surface-2);
