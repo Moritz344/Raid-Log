@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Requests } from '../service/requests';
 import { Item } from '../item/item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PaginatorModule,PaginatorState } from 'primeng/paginator';
+import { Pagination } from '../pagination/pagination';
 
 @Component({
   selector: 'app-arcs',
-  imports: [Topbar,Item,FormsModule,CommonModule,PaginatorModule],
+  imports: [Topbar,Item,FormsModule,CommonModule,Pagination],
   templateUrl: './arcs.html',
   styleUrl: './arcs.css',
 })
 export class Arcs {
-  data: any;
-  searchParameter: {text: string,type: string,rarity: string} = { text: "",type: "",rarity: "" };
-  currentItemPage: number = 0;
-  first: number = 0;
-  rows: number = 10;
-  isLoading: boolean = false;
+  public data: any;
+  public searchParameter: {text: string,type: string,rarity: string} = { text: "",type: "",rarity: "" };
+  public currentPage: number = 1;
+  public currentItemPage: number = 0;
+  public isLoading: boolean = false;
+
+  public pageData = signal<any>([]);
 
   initSearchParameter() {
     this.searchParameter = { text: "",type: "",rarity: "" };
@@ -27,27 +28,43 @@ export class Arcs {
   search() {
     this.isLoading = true;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
-    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe((response: any) => {
-      this.data = response.data;
-      this.isLoading = false;
+    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        console.error('Error searching arcs:', error);
+        this.isLoading = false;
+      }
     });
   }
 
   initData() {
-    this.request.getArcs(0,"",false).subscribe( (response: any) => {
-      this.data = response.data;
+    this.request.getArcs(0,"",false).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        this.pageData.set(response.pagination);
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.error('Error fetching arcs:', error);
+      }
     });
   }
 
-  onPageChange(event: PaginatorState) {
-    this.first = event.first ?? 0;
-    this.rows = event.rows ?? 10;
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.currentItemPage = page;
 
-    this.currentItemPage = (this.first / this.rows ) + 1;
-
-    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe((response: any) => {
-      this.data = response.data;
-      console.log(response);
+    this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.error('Error fetching arcs page:', error);
+      }
     });
 
   }
