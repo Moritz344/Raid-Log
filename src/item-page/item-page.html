@@ -1,60 +1,75 @@
 <app-topbar></app-topbar>
+@if (item) {
 <div class="container">
 
   <div class="left-container">
     <div class="left">
         <div class="item-card">
           <div class="img-container">
-            <img width="140" height="120" [src]="this.item.icon">
+            @if (item.icon) {
+              <img width="140" height="120" [src]="item.icon">
+            }
           </div>
-          <h1 style="display:flex;margin-top: 10px;margin-bottom:5px;">{{ this.item.name }}</h1>
+          <h1 style="display:flex;margin-top: 10px;margin-bottom:5px;">{{ item.name }}</h1>
           <span
             class="rarity"
             [ngStyle]="{ 'background-color': getBackgroundColor() }"
-            >{{ this.item.rarity }}
+            >{{ item.rarity }}
           </span>
           <div class="desc-container">
-            <p>{{ this.item.description }}.</p>
+              <p>{{ item.description }}</p>
           </div>
             <div class="table">
               <table>
                 <tr>
-                  @for (i of getNormalStatsEntries(); track $index) {
-                      <th *ngIf="i.value && !entriesNotToShow.includes(i.key) ">{{ i.key }}</th>
-                    }
+                  @if (item.name) { <th>Name</th> }
+                  @if (item.item_type) { <th>Type</th> }
+                  @if (item.rarity) { <th>Rarity</th> }
+                  @if (item.value) { <th>Value</th> }
+                  @if (item.locations?.length) { <th>Locations</th> }
+                  @if (item.loot_area) { <th>Loot Area</th> }
+                  @if (item.loadout_slots?.length) { <th>Loadout Slots</th> }
                 </tr>
                 <tr>
-                  @for (i of getNormalStatsEntries(); track $index) {
-                      @if (i.value && !entriesNotToShow.includes(i.key)) {
-                        <td>
-                          {{ i.value }}
-                          @if (i.key == "value" ) {
-                          <img width="20" style="margin-left: 0px;background: white;border-radius: 10px" width="15"height="15" src="raider-coin.webp">
-                          }
-                          </td>
-                        }
+                  @if (item.name) { <td>{{ item.name }}</td> }
+                  @if (item.item_type) { <td>{{ item.item_type }}</td> }
+                  @if (item.rarity) { <td>{{ item.rarity }}</td> }
+                  @if (item.value) { <td>{{ item.value }} <img width="20" src="raider-coin.webp"></td> }
+                  @if (item.locations?.length) {
+                  <td>
+                      @for (location of item.locations; track $index) {
+                        {{ location }}
+                      }
+                  </td>
                   }
-
+                  @if (item.loot_area) { <td>{{ item.loot_area }}</td> }
+                  @if (item.loadout_slots?.length) {
+                    <td>
+                      @for (slot of item.loadout_slots; track $index) {
+                        {{ slot }}
+                      }
+                    </td>
+                  }
                 </tr>
               </table>
             <br>
             </div>
+              @if (item.item_type == 'Weapon' && item.stat_block) {
               <div class="table">
-                <table >
+                <table>
                   <tr>
-                    @for (i of getStatBlockEntries(); track $index) {
-                      <th *ngIf="i.value && !entriesNotToShowStats.includes(i.key)">{{ i.key }}</th>
+                    @for (entry of getStatBlockEntries(); track $index) {
+                      <th>{{ entry.key }}</th>
                     }
                   </tr>
                   <tr>
-                    @for (i of getStatBlockEntries(); track $index) {
-                        @if (i.value &&  !entriesNotToShowStats.includes(i.key)) {
-                            <td>{{ i.value }} @if (i.key == "weight") { kg } </td>
-                        }
+                    @for (entry of getStatBlockEntries(); track $index) {
+                      <td>{{ entry.value }} @if (entry.key == "weight") { kg }</td>
                     }
                   </tr>
                 </table>
               </div>
+              }
           <br>
         </div>
     </div>
@@ -63,5 +78,5 @@
   <div class="right">
   </div>
 
-
 </div>
+}

@@ -14,12 +14,8 @@ import { Topbar } from '../topbar/topbar';
 })
 export class ItemPage {
 
-  // TODO: use stat_block
   id: any;
   item: any;
-
-  entriesNotToShow: string[] = ["description", "icon", "id", "stat_block", "created_at", "updated_at", "flavor_text"];
-  entriesNotToShowStats: string[] = ["reducedDispersionRecoveryTime", "reducedDispersionRecoveryTime"];
 
 
   constructor(private route: ActivatedRoute,
@@ -32,22 +28,25 @@ export class ItemPage {
     this.initItemData();
   }
 
-  initItemData() {
-    this.request.getItemWithId(this.id).subscribe((response: any) => {
-      this.item = response.data[0];
-      console.log(this.item);
+  entriesNotToShowStats: string[] = ["reducedDispersionRecoveryTime"];
 
+  initItemData() {
+    this.request.getItemWithId(this.id).subscribe({
+      next: (response: any) => {
+        this.item = response.data[0];
+      },
+      error: (error: any) => {
+        console.error('Error fetching item:', error);
+      }
     });
   }
 
   getStatBlockEntries() {
-    return Object.entries(this.item.stat_block).map(([key, value]) => ({ key, value }));
+    if (!this.item?.stat_block) return [];
+    return Object.entries(this.item.stat_block)
+      .filter(([key]) => !this.entriesNotToShowStats.includes(key))
+      .map(([key, value]) => ({ key, value }));
   }
-
-  getNormalStatsEntries() {
-    return Object.entries(this.item).map(([key, value]) => ({ key, value }));
-  }
-
 
   getBackgroundColor() {
     switch (this.item.rarity) {

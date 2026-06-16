@@ -56,3 +56,6 @@
 }
 
 
+img[src="raider-coin.webp"] {
+  filter: brightness(0) invert(1);
+}
