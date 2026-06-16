@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Blocks } from '../blocks/blocks';
 
-// TODO: work on pagination style
 
 @Component({
   selector: 'app-home',
