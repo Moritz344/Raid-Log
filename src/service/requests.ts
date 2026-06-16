@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
 } from "@angular/common/http";
 
 @Injectable({
@@ -11,7 +9,6 @@ import {
 export class Requests {
 
   limit: number = 12;
-
   itemsData: any;
 
   constructor(private http: HttpClient) { }
