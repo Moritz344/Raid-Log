@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Item } from '../item/item';
 import { Requests } from '../service/requests';
-import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { Pagination } from '../pagination/pagination';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items',
-  imports: [Topbar, Item, PaginatorModule, CommonModule, FormsModule],
+  imports: [Topbar, Item, Pagination, CommonModule, FormsModule],
   templateUrl: './items.html',
   styleUrl: './items.css',
 })
 
 // TODO: Loading animation
 // TODO: nothing found text
-// TODO: show item rarity in item block 
+// TODO: show item rarity in item block
 
 export class Items {
-  first: number = 0;
-  rows: number = 10;
   data: any;
+  currentPage: number = 1;
   currentItemPage: number = 0;
   searchParameter: { text: string, type: string, rarity: string } = { text: "", type: "", rarity: "" };
 
@@ -28,6 +27,7 @@ export class Items {
   itemRarityArray: string[] = [];
 
   isLoading: boolean = false;
+  public pageData = signal<any>([]);
 
   constructor(private requests: Requests) {
     this.initItemTypes();
@@ -81,9 +81,15 @@ export class Items {
   }
 
   initItems() {
-    this.requests.getItems(1, "").subscribe((response: any) => {
-      this.data = response.data;
-      this.requests.saveInitItemData(this.data);
+    this.requests.getItems(1, "").subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        this.requests.saveInitItemData(this.data);
+        this.pageData.set(response.pagination);
+      },
+      error: (error: any) => {
+        console.error('Error fetching items:', error);
+      }
     });
 
 
@@ -91,9 +97,15 @@ export class Items {
 
   onFilter() {
     this.isLoading = true;
-    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
-      this.data = response.data;
-      this.isLoading = false;
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        console.error('Error filtering items:', error);
+        this.isLoading = false;
+      }
     });
   }
 
@@ -101,24 +113,29 @@ export class Items {
     this.isLoading = true;
     this.currentItemPage = 0;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
-    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
-      this.data = response.data;
-      this.isLoading = false;
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        console.error('Error filtering items:', error);
+        this.isLoading = false;
+      }
     });
   }
 
-  onPageChange(event: PaginatorState) {
-    this.first = event.first ?? 0;
-    this.rows = event.rows ?? 10;
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.currentItemPage = page;
 
-    this.currentItemPage = (this.first / this.rows) + 1;
-
-    console.log(this.currentItemPage);
-
-    console.log("currently searching:", this.searchParameter.text);
-    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe((response: any) => {
-      this.data = response.data;
-      console.log(response);
+    this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
+      next: (response: any) => {
+        this.data = response.data;
+      },
+      error: (error: any) => {
+        console.error('Error fetching items page:', error);
+      }
     });
 
   }

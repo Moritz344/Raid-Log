@@ -39,14 +39,12 @@
       ></app-item>
     }
   </div>
-<div *ngIf="!isLoading" class="pages" >
-    <p-paginator
-    (onPageChange)="onPageChange($event)"
-    [first]="first"
-    [rows]="rows"
-    [totalRecords]="120"
-    [rowsPerPageOptions]="[10, 20, 30]"
-    />
+<div *ngIf="!isLoading">
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="pageData().totalPages"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
 </div>
 <br>
 <br>
