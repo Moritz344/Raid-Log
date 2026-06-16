@@ -17,10 +17,10 @@
               </div>
             <div *ngIf="showLoot" class="loot">
               @for (loot of item.loot;track $index) {
-                <app-item [name]="loot.item.name" 
+                <app-item-block [name]="loot.item.name" 
                 [id]="loot.item_id" 
                 route="item/{{loot.item_id}}"
-                [img]="loot.item.icon"></app-item>
+                [img]="loot.item.icon"></app-item-block>
               }
             </div>
             </div>

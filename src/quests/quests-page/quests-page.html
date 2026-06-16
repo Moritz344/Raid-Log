@@ -20,7 +20,7 @@
     </div>
     <div *ngIf="showRewards" class="items">
       @for (obj of data.rewards; track $index ) {
-      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
+      <app-item-block [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item-block>
       }
     </div>
   </div>
@@ -32,7 +32,7 @@
     </div>
     <div *ngIf="showGrantedItem" class="items">
       @for (obj of data.granted_items; track $index ) {
-      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
+      <app-item-block [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item-block>
       }
     </div>
   </div>
@@ -44,7 +44,7 @@
     </div>
     <div *ngIf="showRequiredItem" class="items">
       @for (obj of data.required_items; track $index ) {
-      <app-item [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item>
+      <app-item-block [name]="obj.item.name" [desc]="obj.item.item_type" route="item/{{obj.item_id}}" [img]="obj.item.icon"></app-item-block>
       }
     </div>
   </div>

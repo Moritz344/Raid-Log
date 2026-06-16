@@ -3,7 +3,7 @@
 
   <div class="trader">
     @for (trader of traders; track $index) {
-      <app-item [name]="trader.name" [desc]="trader.desc" [img]="trader.img" route="trader/{{trader.name}}"></app-item>
+      <app-item-block [name]="trader.name" [desc]="trader.desc" [img]="trader.img" route="trader/{{trader.name}}"></app-item-block>
     }
   </div>
   

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Requests } from '../service/requests';
+import { Requests } from '../../service/requests';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Topbar } from '../topbar/topbar';
+import { Topbar } from '../../topbar/topbar';
 
 @Component({
   selector: 'app-item-page',

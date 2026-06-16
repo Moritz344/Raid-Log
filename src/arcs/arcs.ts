@@ -1,14 +1,14 @@
 import { Component,signal } from '@angular/core';
 import { Topbar } from '../topbar/topbar';
 import { Requests } from '../service/requests';
-import { Item } from '../item/item';
+import { ItemBlock } from '../items/item-block/item-block';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Pagination } from '../pagination/pagination';
 
 @Component({
   selector: 'app-arcs',
-  imports: [Topbar,Item,FormsModule,CommonModule,Pagination],
+  imports: [Topbar,ItemBlock,FormsModule,CommonModule,Pagination],
   templateUrl: './arcs.html',
   styleUrl: './arcs.css',
 })

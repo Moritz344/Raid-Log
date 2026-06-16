@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Requests } from '../service/requests';
+import { Requests } from '../../service/requests';
 import { ActivatedRoute } from '@angular/router';
-import { Topbar } from '../topbar/topbar';
-import { Item } from '../item/item';
+import { Topbar } from '../../topbar/topbar';
+import { ItemBlock } from '../../items/item-block/item-block';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-quests-page',
-  imports: [Topbar,CommonModule,FormsModule,Item],
+  imports: [Topbar,CommonModule,FormsModule,ItemBlock],
   templateUrl: './quests-page.html',
   styleUrl: './quests-page.css',
 })

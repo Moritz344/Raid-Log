@@ -1,6 +1,6 @@
 import { Component, signal} from '@angular/core';
 import { Topbar } from '../topbar/topbar';
-import { Item } from '../item/item';
+import { ItemBlock } from './item-block/item-block';
 import { Requests } from '../service/requests';
 import { Pagination } from '../pagination/pagination';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items',
-  imports: [Topbar, Item, Pagination, CommonModule, FormsModule],
+  imports: [Topbar, ItemBlock, Pagination, CommonModule, FormsModule],
   templateUrl: './items.html',
   styleUrl: './items.css',
 })

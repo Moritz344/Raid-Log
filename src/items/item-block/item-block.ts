@@ -4,13 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-item',
+  selector: 'app-item-block',
   imports: [FormsModule,CommonModule],
-  templateUrl: './item.html',
-  styleUrl: './item.css',
+  templateUrl: './item-block.html',
+  styleUrl: './item-block.css',
 })
-export class Item {
-
+export class ItemBlock {
   @Input() name: string = "";
   @Input() desc: string = "";
   @Input() img: string = "";

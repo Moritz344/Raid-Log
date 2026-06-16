@@ -12,11 +12,11 @@
 
   <div class="item" *ngIf="!isLoading">
     @for(quest of data; track $index) {
-    <app-item 
+    <app-item-block 
       [name]="quest.name"
       [desc]="quest.objectives[0] + ' '  + quest.objectives[1]"
       route="quest/{{quest.name}}"
-    ></app-item>
+    ></app-item-block>
     }
   </div>
   <br>

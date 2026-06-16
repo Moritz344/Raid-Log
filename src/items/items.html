@@ -31,12 +31,12 @@
   <div  class="item" *ngIf="!isLoading">
     @for(item of data; track $index) {
   
-      <app-item
+      <app-item-block
       [name]="item.name"
       [desc]="item.description"
       [img]="item.icon"
       route="item/{{ item.id }}"
-      ></app-item>
+      ></app-item-block>
     }
   </div>
 <div *ngIf="!isLoading">

@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { Topbar } from '../topbar/topbar';
-import { Item } from '../item/item';
+import { Topbar } from '../../topbar/topbar';
+import { ItemBlock } from '../../items/item-block/item-block';
 import { ActivatedRoute } from '@angular/router';
-import { Requests } from '../service/requests';
+import { Requests } from '../../service/requests';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-arc-page',
-  imports: [Topbar,FormsModule,CommonModule,Item],
+  imports: [Topbar,FormsModule,CommonModule,ItemBlock],
   templateUrl: './arc-page.html',
   styleUrl: './arc-page.css',
 })

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Requests } from '../service/requests';
-import { Topbar } from '../topbar/topbar';
-import { Item } from '../item/item';
+import { Requests } from '../../service/requests';
+import { Topbar } from '../../topbar/topbar';
+import { ItemBlock } from '../../items/item-block/item-block';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trader-page',
-  imports: [Topbar,Item,FormsModule,CommonModule],
+  imports: [Topbar,ItemBlock,FormsModule,CommonModule],
   templateUrl: './trader-page.html',
   styleUrl: './trader-page.css',
 })

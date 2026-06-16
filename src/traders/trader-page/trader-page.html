@@ -14,7 +14,7 @@
   </div>
   <div class="items" *ngIf="showItems">
     @for (item of data; track $index) {
-      <app-item [name]="item.name" route="item/{{item.id}}" [desc]="item.description" [img]="item.icon" ></app-item>
+      <app-item-block [name]="item.name" route="item/{{item.id}}" [desc]="item.description" [img]="item.icon" ></app-item-block>
     }
   </div>
   <br>
