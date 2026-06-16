@@ -22,4 +22,10 @@
   <br>
   <br>
 
+  <app-pagination
+  [totalPages]="pageData().totalPages"
+  [currentPage]="currentItemPage"
+  (pageChange)="onPageChange($event)"
+  ></app-pagination>
+
 </div>
