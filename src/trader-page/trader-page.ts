@@ -57,10 +57,14 @@ export class TraderPage {
   ];
 
   initTraderData() {
-    this.request.getTraders().subscribe((response: any) => {
-      this.data = response.data[this.name.replace(/ /g, '')];
-      console.log(this.data);
-      
+    this.request.getTraders().subscribe({
+      next: (response: any) => {
+        this.data = response.data[this.name.replace(/ /g, '')];
+        console.log(this.data);
+      },
+      error: (error: any) => {
+        console.error('Error fetching traders:', error);
+      }
     });
     console.log(this.descriptions);
 
