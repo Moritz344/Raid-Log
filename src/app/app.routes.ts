@@ -4,11 +4,11 @@ import { Items } from '../items/items';
 import { Traders } from '../traders/traders';
 import { Arcs } from '../arcs/arcs';
 import { Quests } from '../quests/quests';
-import { ItemPage } from '../item-page/item-page'
+import { ItemPage } from '../items/item-page/item-page'
 import { Tracker } from '../tracker/tracker';
-import { TraderPage } from '../trader-page/trader-page';
-import { ArcPage } from '../arc-page/arc-page';
-import { QuestsPage } from '../quests-page/quests-page';
+import { TraderPage } from '../traders/trader-page/trader-page';
+import { ArcPage } from '../arcs/arc-page/arc-page';
+import { QuestsPage } from '../quests/quests-page/quests-page';
 
 export const routes: Routes = [
   { path: "",component: Home},
