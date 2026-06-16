@@ -13,21 +13,23 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './quests-page.css',
 })
 export class QuestsPage {
-  id: any;
-  search: {text: string} = {text: ''};
-  data: any;
-  showObjective: boolean = true;
-  showRewards: boolean = true;
-  showGrantedItem: boolean = true;
-  showRequiredItem: boolean = true;
-  showLocation: boolean = true;
-
-  // TODO: show map image
+  public id: any;
+  public search: {text: string} = {text: ''};
+  public data: any;
+  public showObjective: boolean = true;
+  public showRewards: boolean = true;
+  public showGrantedItem: boolean = true;
+  public showRequiredItem: boolean = true;
+  public showLocation: boolean = true;
 
   initData() {
-    this.request.getQuests(this.search).subscribe((response: any) => {
-      this.data = response.data[0];
-      console.log(response);
+    this.request.getQuests(0,this.search).subscribe({
+      next: (response: any) => {
+        this.data = response.data[0];
+      },
+      error: (error: any) => {
+        console.error('Error fetching quest details:', error);
+      }
     });
   }
 
