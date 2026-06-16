@@ -21,8 +21,15 @@ export class ArcPage {
   showLoot: boolean = true;
 
   initData() {
-    this.request.getArcs(0,this.searchParameter,true).subscribe((response: any) => {
-      this.item = response.data[0];
+    this.request.getArcs(0,this.searchParameter,true).subscribe({
+      next: (response: any) => {
+        if (response.data.length > 0) {
+          this.item = response.data[0];
+        }
+      },
+      error: (error: any) => {
+        console.error('Error fetching arc details:', error);
+      }
     });
   }
 
