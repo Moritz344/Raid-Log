@@ -69,12 +69,14 @@ export class Requests {
 
   }
 
-  getQuests(search: any) {
+  getQuests(page: number,search: any) {
     const params = new URLSearchParams();
 
     if (search.text) {
       params.append("search", search.text);
     }
+
+    params.append("page", page.toString());
 
     const url = `/api/arc-raiders/quests?${params}`;
 
