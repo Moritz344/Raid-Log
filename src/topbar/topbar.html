@@ -1,7 +1,7 @@
 <div class="container">
-  <a [ngClass]="{'active': selected == ''}" (click)="navigate('')">Home </a>
-  <a [ngClass]="{'active': selected == 'items'}" (click)="navigate('items')">Items</a>
-  <a [ngClass]="{'active': selected == 'traders'}" (click)="navigate('traders')">Traders</a>
-  <a [ngClass]="{'active': selected == 'arcs'}" (click)="navigate('arcs')">Arcs</a>
-  <a [ngClass]="{'active': selected == 'quests'}" (click)="navigate('quests')">Quests</a>
+  <a [ngClass]="{'active': selected() == ''}" (click)="navigate('')">Home </a>
+  <a [ngClass]="{'active': selected() == 'items'}" (click)="navigate('items')">Items</a>
+  <a [ngClass]="{'active': selected() == 'traders'}" (click)="navigate('traders')">Traders</a>
+  <a [ngClass]="{'active': selected() == 'arcs'}" (click)="navigate('arcs')">Arcs</a>
+  <a [ngClass]="{'active': selected() == 'quests'}" (click)="navigate('quests')">Quests</a>
 </div>

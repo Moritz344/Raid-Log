@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit,inject,signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { filter } from 'rxjs/operators';
+import { Settings } from '../service/settings';
 
 @Component({
   selector: 'app-topbar',
@@ -11,22 +11,18 @@ import { filter } from 'rxjs/operators';
   styleUrl: './topbar.css',
 })
 export class Topbar implements OnInit {
-  public selected: string = "";
+  public selected = signal<string>("");
+  public settings = inject(Settings);
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.selected = this.router.url.replace('/', '');
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.selected = event.urlAfterRedirects.replace(/^\//, '');
-    });
+    this.selected = this.settings.currentTab;
   }
 
   navigate(route: string) {
     this.router.navigate([route]);
+    this.settings.currentTab.set(route);
   }
 
 }
