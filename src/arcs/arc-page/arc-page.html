@@ -10,20 +10,22 @@
             </div>
             <h1 style="display:flex;margin-top: 10px;margin-bottom:5px;">{{ this.item.name }}</h1>
             <p class="desc">{{ this.item.description }}</p>
-            <div (click)="onLootDetails()" class="loot-details">
-              <div class="details">
-              <img [ngStyle]="{ transform: showLoot ? 'rotate(180deg)' : 'rotate(0deg)' }" src="arrow.svg">
-                <h1>Loot</h1>
+            @if (item.loot.length > 0) {
+              <div (click)="onLootDetails()" class="loot-details">
+                <div class="details">
+                <img [ngStyle]="{ transform: showLoot ? 'rotate(180deg)' : 'rotate(0deg)' }" src="arrow.svg">
+                  <h1>Loot</h1>
+                </div>
+              <div *ngIf="showLoot" class="loot">
+                @for (loot of item.loot;track $index) {
+                  <app-item-block [name]="loot.item.name" 
+                  [id]="loot.item_id" 
+                  route="item/{{loot.item_id}}"
+                  [img]="loot.item.icon"></app-item-block>
+                }
               </div>
-            <div *ngIf="showLoot" class="loot">
-              @for (loot of item.loot;track $index) {
-                <app-item-block [name]="loot.item.name" 
-                [id]="loot.item_id" 
-                route="item/{{loot.item_id}}"
-                [img]="loot.item.icon"></app-item-block>
-              }
-            </div>
-            </div>
+              </div>
+            }
             <br>
           </div>
       </div>
