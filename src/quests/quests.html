@@ -4,13 +4,13 @@
     <input spellcheck="false" (keydown.code.enter)="search()" [(ngModel)]="searchParameter.text" placeholder="Search ..." >
   </div>
 
-  @if (isLoading) {
+  @if (isLoading()) {
     <div class="loading-container">
       <div class="load"></div>
     </div>
   }
 
-  <div class="item" *ngIf="!isLoading">
+  <div class="item" *ngIf="!isLoading()">
     @for(quest of data; track $index) {
     <app-item-block 
       [name]="quest.name"
@@ -22,10 +22,12 @@
   <br>
   <br>
 
-  <app-pagination
-  [totalPages]="pageData().totalPages"
-  [currentPage]="currentItemPage"
-  (pageChange)="onPageChange($event)"
-  ></app-pagination>
+  @if (!isLoading()) {
+    <app-pagination
+    [totalPages]="pageData().totalPages"
+    [currentPage]="currentItemPage"
+    (pageChange)="onPageChange($event)"
+    ></app-pagination>
+  }
 
 </div>

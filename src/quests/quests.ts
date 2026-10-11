@@ -16,7 +16,7 @@ import { Pagination } from '../pagination/pagination';
 export class Quests {
   public data: any;
   public searchParameter: { text: string, } = { text: "" };
-  public isLoading: boolean = false;
+  public isLoading = signal<boolean>(false);
   public pageData = signal<any>([]);
 
   public currentPage: number = 1;
@@ -29,10 +29,12 @@ export class Quests {
   }
 
   initData() {
+    this.isLoading.set(true);
     this.request.getQuests(this.currentItemPage,"").subscribe({
       next: (response: any) => {
         this.data = response.data;
         this.pageData.set(response.pagination);
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching quests:', error);
@@ -41,27 +43,28 @@ export class Quests {
   }
 
   search() {
-    this.isLoading = true;
+    this.isLoading.set(true);
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.request.getQuests(this.currentItemPage,this.searchParameter).subscribe({
       next: (response: any) => {
         this.data = response.data;
-        this.isLoading = false;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error searching quests:', error);
-        this.isLoading = false;
       }
     });
   }
 
   onPageChange(page: number) {
+    this.isLoading.set(true);
     this.currentPage = page;
     this.currentItemPage = page;
 
     this.request.getQuests(this.currentItemPage, this.searchParameter).subscribe({
       next: (response: any) => {
         this.data = response.data;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching items page:', error);
