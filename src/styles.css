@@ -70,6 +70,13 @@
     }
 }
 
+
+.loading-container{
+  display: flex;
+  justify-content: center;
+  margin-left: -500px;
+}
+
 .load {
 	width: 100px;
 	height: 100px;
