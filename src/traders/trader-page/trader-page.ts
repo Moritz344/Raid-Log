@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Requests } from '../../service/requests';
 import { Topbar } from '../../topbar/topbar';
@@ -16,6 +16,7 @@ export class TraderPage {
   name: any;
   data: any;
   showItems: boolean = true;
+  public isLoading = signal<boolean>(false);
 
   descriptions:{name: string,desc:string}[] = [
     {
@@ -57,16 +58,16 @@ export class TraderPage {
   ];
 
   initTraderData() {
+    this.isLoading.set(true);
     this.request.getTraders().subscribe({
       next: (response: any) => {
         this.data = response.data[this.name.replace(/ /g, '')];
-        console.log(this.data);
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching traders:', error);
       }
     });
-    console.log(this.descriptions);
 
   }
 
@@ -113,7 +114,6 @@ export class TraderPage {
               private request: Requests) {
     this.route.paramMap.subscribe(( obs ) => {
       this.name = obs.get("name");
-      console.log(obs.get("name"));
     });
 
     this.initTraderData();

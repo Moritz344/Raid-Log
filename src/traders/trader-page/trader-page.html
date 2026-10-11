@@ -8,6 +8,7 @@
     <p>{{ getDescriptionForTrader() }}</p>
   </div>
 
+@if (!isLoading()) {
   <div class="items-header">
     <img (click)="onItems()" [ngStyle]="{ transform: showItems ? 'rotate(180deg)' : 'rotate(0deg)' }" width="40px" src="arrow.svg">
     <h1>Items</h1>
@@ -19,4 +20,12 @@
   </div>
   <br>
   <br>
+}
 </div>
+
+
+@if(isLoading()) {
+  <div class="loading-container">
+    <div class="load"></div>
+  </div>
+  }
