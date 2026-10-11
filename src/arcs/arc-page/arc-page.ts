@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { Topbar } from '../../topbar/topbar';
 import { ItemBlock } from '../../items/item-block/item-block';
 import { ActivatedRoute } from '@angular/router';
@@ -15,16 +15,20 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ArcPage {
-  id: any;
-  item: any;
-  searchParameter: {text: string} = {text: ""};
-  showLoot: boolean = true;
+  public id: any;
+  public item: any;
+  public searchParameter: {text: string} = {text: ""};
+  public showLoot: boolean = true;
+
+  public isLoading = signal<boolean>(false);
 
   initData() {
+    this.isLoading.set(true);
     this.request.getArcs(0,this.searchParameter,true).subscribe({
       next: (response: any) => {
         if (response.data.length > 0) {
           this.item = response.data[0];
+          this.isLoading.set(false);
         }
       },
       error: (error: any) => {
