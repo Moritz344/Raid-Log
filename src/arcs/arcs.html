@@ -7,18 +7,18 @@
 
   </div>
 
-  @if(isLoading ) {
+  @if(isLoading()) {
     <div class="loading-container">
       <div class="load"></div>
     </div>
     }
 
-  <div class="items" *ngIf="!isLoading">
+  <div class="items" *ngIf="!isLoading()">
     @for (arc of data; track $index) {
     <app-item-block [name]="arc.name" [desc]="arc.description" [img]="arc.icon" [id]="arc.id" route="arc/{{ arc.id }}"  ></app-item-block>
     }
   </div>
-<div *ngIf="!isLoading">
+<div *ngIf="!isLoading()">
   <app-pagination
     [currentPage]="currentPage"
     [totalPages]="pageData().totalPages"

@@ -17,7 +17,7 @@ export class Arcs {
   public searchParameter: {text: string,type: string,rarity: string} = { text: "",type: "",rarity: "" };
   public currentPage: number = 1;
   public currentItemPage: number = 0;
-  public isLoading: boolean = false;
+  public isLoading = signal<boolean>(false);
 
   public pageData = signal<any>([]);
 
@@ -26,26 +26,26 @@ export class Arcs {
   }
 
   search() {
-    this.isLoading = true;
+    this.isLoading.set(true);
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe({
       next: (response: any) => {
         this.data = response.data;
-        this.isLoading = false;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error searching arcs:', error);
-        this.isLoading = false;
       }
     });
   }
 
   initData() {
+    this.isLoading.set(true);
     this.request.getArcs(0,"",false).subscribe({
       next: (response: any) => {
         this.data = response.data;
         this.pageData.set(response.pagination);
-        console.log(response);
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching arcs:', error);
@@ -54,13 +54,14 @@ export class Arcs {
   }
 
   onPageChange(page: number) {
+    this.isLoading.set(true);
     this.currentPage = page;
     this.currentItemPage = page;
 
     this.request.getArcs(this.currentItemPage,this.searchParameter,false).subscribe({
       next: (response: any) => {
         this.data = response.data;
-        console.log(response);
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching arcs page:', error);
