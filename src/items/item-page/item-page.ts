@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Requests } from '../../service/requests';
 import { CommonModule } from '@angular/common';
@@ -13,10 +13,9 @@ import { Topbar } from '../../topbar/topbar';
   styleUrl: './item-page.css',
 })
 export class ItemPage {
-
-  id: any;
-  item: any;
-
+  public id: any;
+  public item: any;
+  public isLoading = signal<boolean>(false);
 
   constructor(private route: ActivatedRoute,
     private request: Requests) {
@@ -31,9 +30,11 @@ export class ItemPage {
   entriesNotToShowStats: string[] = ["reducedDispersionRecoveryTime"];
 
   initItemData() {
+    this.isLoading.set(true);
     this.request.getItemWithId(this.id).subscribe({
       next: (response: any) => {
         this.item = response.data[0];
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching item:', error);
@@ -65,9 +66,5 @@ export class ItemPage {
     }
   }
 
-  ngOnInit() {
-
-
-  }
 
 }
