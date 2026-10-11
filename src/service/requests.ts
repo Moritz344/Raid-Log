@@ -31,7 +31,6 @@ export class Requests {
     params.append("page", page.toString());
     params.append("limit", this.limit.toString());
     const url = `/api/arc-raiders/items?${params}`;
-    console.log("url", url);
     return this.http.get(url);
   }
 
