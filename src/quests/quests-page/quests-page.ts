@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { Requests } from '../../service/requests';
 import { ActivatedRoute } from '@angular/router';
 import { Topbar } from '../../topbar/topbar';
@@ -21,11 +21,14 @@ export class QuestsPage {
   public showGrantedItem: boolean = true;
   public showRequiredItem: boolean = true;
   public showLocation: boolean = true;
+  public isLoading = signal<boolean>(false);
 
   initData() {
+    this.isLoading.set(true);
     this.request.getQuests(0,this.search).subscribe({
       next: (response: any) => {
         this.data = response.data[0];
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching quest details:', error);
@@ -60,7 +63,6 @@ export class QuestsPage {
     this.route.paramMap.subscribe(( obs ) => {
       this.id = obs.get("name");
       this.search.text = this.id;
-      console.log(obs.get("name"));
     });
     this.initData();
   }
