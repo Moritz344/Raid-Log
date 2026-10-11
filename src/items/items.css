@@ -44,9 +44,4 @@ input{
   margin-top: 20px;
 }
 
-.loading-container{
-  display: flex;
-  justify-content: center;
-  margin-left: -500px;
-}
 

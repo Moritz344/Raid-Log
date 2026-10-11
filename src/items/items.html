@@ -22,15 +22,14 @@
     </select>
   </div>
 
-  @if(isLoading ) {
+  @if(isLoading()) {
     <div class="loading-container">
       <div class="load"></div>
     </div>
     }
 
-  <div  class="item" *ngIf="!isLoading">
+  <div class="item" *ngIf="!isLoading()">
     @for(item of data; track $index) {
-  
       <app-item-block
       [name]="item.name"
       [desc]="item.description"
@@ -39,7 +38,7 @@
       ></app-item-block>
     }
   </div>
-<div *ngIf="!isLoading">
+<div *ngIf="!isLoading()">
   <app-pagination
     [currentPage]="currentPage"
     [totalPages]="pageData().totalPages"

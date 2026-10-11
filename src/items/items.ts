@@ -26,7 +26,7 @@ export class Items {
   itemTypesArray: string[] = [];
   itemRarityArray: string[] = [];
 
-  isLoading: boolean = false;
+  public isLoading = signal<boolean>(false);
   public pageData = signal<any>([]);
 
   constructor(private requests: Requests) {
@@ -96,42 +96,42 @@ export class Items {
   }
 
   onFilter() {
-    this.isLoading = true;
+    this.isLoading.set(true);
     this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
       next: (response: any) => {
         this.data = response.data;
-        this.isLoading = false;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error filtering items:', error);
-        this.isLoading = false;
       }
     });
   }
 
   search() {
-    this.isLoading = true;
+    this.isLoading.set(true);
     this.currentItemPage = 0;
     if (this.searchParameter.text.length < 2 && this.searchParameter.text != "") { return; };
     this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
       next: (response: any) => {
         this.data = response.data;
-        this.isLoading = false;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error filtering items:', error);
-        this.isLoading = false;
       }
     });
   }
 
   onPageChange(page: number) {
+    this.isLoading.set(true);
     this.currentPage = page;
     this.currentItemPage = page;
 
     this.requests.getItems(this.currentItemPage, this.searchParameter).subscribe({
       next: (response: any) => {
         this.data = response.data;
+        this.isLoading.set(false);
       },
       error: (error: any) => {
         console.error('Error fetching items page:', error);
